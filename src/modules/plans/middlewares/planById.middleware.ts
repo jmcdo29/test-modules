@@ -22,6 +22,9 @@ export class PlanByIdMiddleware implements NestMiddleware {
        console.log('PlanByIdMiddleware');
   }
   async use(request, response, next: Function) {
+       console.log('-----------PLAN MIDDLEWARE IS FIRED------------');
+      console.log('');
+      console.log('');       
        const db = request['dbConnection'];
        this.planModel = db.model(PLAN_MODEL_TOKEN, PlanSchema) as Model<IPlan>;
 

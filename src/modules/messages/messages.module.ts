@@ -26,11 +26,11 @@ export class MessagesModule implements NestModule {
     }
     public configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(MessageValidatorMiddleware)
-            .forRoutes({ path: 'messages', method: RequestMethod.POST });
+                .apply(MessageValidatorMiddleware)
+                .forRoutes({ path: 'messages', method: RequestMethod.POST });
 
         consumer.apply(MessageByIdMiddleware)
-            .forRoutes({ path: 'messages/:messageId', method: RequestMethod.ALL });
+                .forRoutes({ path: 'messages/:messageId', method: RequestMethod.ALL });
         //  users id calling middleware for findById users before run another methods like "delete/update/read"
     }
 }

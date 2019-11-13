@@ -29,11 +29,15 @@ export class ArticlesModule implements NestModule {
     }
     public configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(ArticleValidatorMiddleware)
-            .forRoutes({ path: 'articles', method: RequestMethod.POST });
+                .apply(ArticleValidatorMiddleware)
+                .forRoutes({ 
+                    path: 'articles', 
+                    method: RequestMethod.POST
+                });
 
-        consumer.apply(ArticleByIdMiddleware)
-            .forRoutes({ path: 'articles/:articleId', method: RequestMethod.ALL });
+        consumer
+                .apply(ArticleByIdMiddleware)
+                .forRoutes({ path: 'articles/:articleId', method: RequestMethod.ALL });
         //  users id calling middleware for findById users before run another methods like "delete/update/read"
     }
 }

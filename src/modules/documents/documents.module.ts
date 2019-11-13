@@ -25,12 +25,14 @@ export class DocumentsModule implements NestModule {
         console.log('Documents module loaded');
     }
     public configure(consumer: MiddlewareConsumer) {
-        consumer
-            .apply(DocumentValidatorMiddleware)
-            .forRoutes({ path: 'documents', method: RequestMethod.POST });
+            consumer
+                .apply(DocumentValidatorMiddleware)
+                .forRoutes({ path: 'documents', method: RequestMethod.POST });
 
-        consumer.apply(DocumentByIdMiddleware)
-            .forRoutes({ path: 'documents/:documentId', method: RequestMethod.ALL });
-        //  users id calling middleware for findById users before run another methods like "delete/update/read"
+            consumer.apply(DocumentByIdMiddleware)
+                .forRoutes({ path: 'documents/:documentId', method: RequestMethod.ALL });
+        //  users id calling middleware for findById users before run another methods like "delete/update/read"            
+
     }
 }
+;

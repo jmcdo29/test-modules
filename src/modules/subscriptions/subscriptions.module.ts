@@ -30,11 +30,11 @@ export class SubscriptionsModule implements NestModule {
     }
     public configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(SubscriptionValidatorMiddleware)
-            .forRoutes({ path: 'subscriptions', method: RequestMethod.POST });
+                .apply(SubscriptionValidatorMiddleware)
+                .forRoutes({ path: 'subscriptions', method: RequestMethod.POST });
 
         consumer.apply(SubscriptionByIdMiddleware)
-            .forRoutes({ path: 'subscriptions/:subscriptionId', method: RequestMethod.ALL });
+                .forRoutes({ path: 'subscriptions/:subscriptionId', method: RequestMethod.ALL });
         //  users id calling middleware for findById users before run another methods like "delete/update/read"
     }
 }

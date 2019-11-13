@@ -26,11 +26,11 @@ export class CompaniesModule implements NestModule {
     }
     public configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(CompanyValidatorMiddleware)
-            .forRoutes({ path: 'companies', method: RequestMethod.POST });
+                .apply(CompanyValidatorMiddleware)
+                .forRoutes({ path: 'companies', method: RequestMethod.POST });
 
         consumer.apply(CompanyByIdMiddleware)
-            .forRoutes({ path: 'companies/:companyId', method: RequestMethod.ALL });
+                .forRoutes({ path: 'companies/:companyId', method: RequestMethod.ALL });
         //  users id calling middleware for findById users before run another methods like "delete/update/read"
     }
 }

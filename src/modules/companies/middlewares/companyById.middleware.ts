@@ -22,6 +22,9 @@ export class CompanyByIdMiddleware implements NestMiddleware {
        console.log('CompanyByIdMiddleware');
   }
   async use(request, response, next: Function) {
+       console.log('-----------COMPANY MIDDLEWARE IS FIRED------------');
+      console.log('');
+      console.log('');       
        const db = request['dbConnection'];
        this.companyModel = db.model(COMPANY_MODEL_TOKEN, CompanySchema) as Model<ICompany>;
 

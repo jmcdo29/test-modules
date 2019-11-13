@@ -26,37 +26,21 @@ import { TenantMiddleware } from './common/middlewares/tenant.middleware';
 import { TokenMiddleware } from './common/middlewares/token.middleware';
 
 import { GlobalVariables } from './global-variables';
-import { ModuleAModule } from './modules/moduleA/modeuleA.module';
-import { ModuleBModule } from './modules/moduleB/modeuleB.module';
-import { ModuleCModule } from './modules/moduleC/modeuleC.module';
-import { ModuleDModule } from './modules/moduleD/modeuleD.module';
-import { ModuleEModule } from './modules/moduleE/modeuleE.module';
-import { ModuleFModule } from './modules/moduleF/modeuleF.module';
-import { ModuleGModule } from './modules/moduleG/modeuleG.module';
-import { ModuleHModule } from './modules/moduleH/modeuleH.module';
 
 @Module({
   imports: [
     DatabaseModule,
     AuthModule,
     ApplicantsModule,
+    CompaniesModule,    
     CategoriesModule,
-    CompaniesModule,
     ArticlesModule,
     JobsModule,
     DocumentsModule,
     UsersModule,
     PlansModule,
-    ModuleAModule,
     SubscriptionsModule,
-    MessagesModule,    
-    ModuleBModule,
-    ModuleCModule,
-    ModuleDModule,
-    ModuleEModule,
-    ModuleFModule,
-    ModuleGModule,
-    ModuleHModule
+    MessagesModule
   ],
   controllers: [AppController],
   providers: [
@@ -68,7 +52,7 @@ import { ModuleHModule } from './modules/moduleH/modeuleH.module';
 export class AppModule implements NestModule{
     configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(TenantMiddleware, LoggerMiddleware, TokenMiddleware)
-            .forRoutes('*');
+                .apply(TenantMiddleware, LoggerMiddleware, TokenMiddleware)
+                .forRoutes('*');
     }
 }

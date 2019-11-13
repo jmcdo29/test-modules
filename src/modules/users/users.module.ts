@@ -23,8 +23,8 @@ import { UserByIdMiddleware } from './middlewares/userbyId.middleware';
 export class UsersModule implements NestModule {
     public configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(UserByIdMiddleware)
-            .forRoutes({ path: 'users/:userId', method: RequestMethod.ALL });
+                .apply(UserByIdMiddleware)
+                .forRoutes({ path: 'users/:userId', method: RequestMethod.ALL });
         //  users id calling middleware for findById users before run another methods like "delete/update/read"
     }
 }

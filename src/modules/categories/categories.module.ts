@@ -26,11 +26,11 @@ export class CategoriesModule implements NestModule {
     }
     public configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(CategoryValidatorMiddleware)
-            .forRoutes({ path: 'categories', method: RequestMethod.POST });
+                .apply(CategoryValidatorMiddleware)
+                .forRoutes({ path: 'categories', method: RequestMethod.POST });
 
         consumer.apply(CategoryByIdMiddleware)
-            .forRoutes({ path: 'categories/:categoryId', method: RequestMethod.ALL });
+                .forRoutes({ path: 'categories/:categoryId', method: RequestMethod.ALL });
         //  users id calling middleware for findById users before run another methods like "delete/update/read"
     }
 }
