@@ -22,6 +22,9 @@ export class CategoryByIdMiddleware implements NestMiddleware {
        console.log('CategoryByIdMiddleware');
   }
   async use(request, response, next: Function) {
+      console.log('-----------CATEGORY MIDDLEWARE IS FIRED------------');
+      console.log('');
+      console.log('');
        const db = request['dbConnection'];
        this.categoryModel = db.model(CATEGORY_MODEL_TOKEN, CategorySchema) as Model<ICategory>;
 

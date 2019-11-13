@@ -26,11 +26,12 @@ export class ApplicantsModule implements NestModule {
     }
     public configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(ApplicantValidatorMiddleware)
-            .forRoutes({ path: 'applicants', method: RequestMethod.POST });
+                .apply(ApplicantValidatorMiddleware)
+                .forRoutes({ path: 'applicants', method: RequestMethod.POST });
 
-        consumer.apply(ApplicantByIdMiddleware)
-            .forRoutes({ path: 'applicants/:applicantId', method: RequestMethod.ALL });
+        consumer
+                .apply(ApplicantByIdMiddleware)
+                .forRoutes({ path: 'applicants/:applicantId', method: RequestMethod.ALL });
         //  users id calling middleware for findById users before run another methods like "delete/update/read"
     }
 }

@@ -22,6 +22,9 @@ export class SubscriptionByIdMiddleware implements NestMiddleware {
        console.log('SubscriptionByIdMiddleware');
   }
   async use(request, response, next: Function) {
+       console.log('-----------SUBSCRIPTION MIDDLEWARE IS FIRED------------');
+      console.log('');
+      console.log('');       
        const db = request['dbConnection'];
        this.subscriptionModel = db.model(SUBSCRIPTION_MODEL_TOKEN, SubscriptionSchema) as Model<ISubscription>;
 

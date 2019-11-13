@@ -21,12 +21,12 @@ export class UserByIdMiddleware implements NestMiddleware {
         console.log('User by id middleware called');
     }
     async use(request, response, next: Function) {
+        console.log('-----------USER MIDDLEWARE IS FIRED------------');
         const db = request['dbConnection'];
         this.userModel = db.model(USER_MODEL_TOKEN, UserSchema) as Model<IUser>;
         const allowedRoutes = ['me', 'upload', 'password-change'];
         const isAllowedRoute = (allowedRoutes.indexOf(request.params.userId) > -1);
-        console.log('is allowed');
-        console.log(isAllowedRoute);
+
         if (isAllowedRoute) {
             return next();
         } else if (!Types.ObjectId.isValid(request.params.userId)) {

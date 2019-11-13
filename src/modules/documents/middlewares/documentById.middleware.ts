@@ -22,6 +22,9 @@ export class DocumentByIdMiddleware implements NestMiddleware {
        console.log('DocumentByIdMiddleware');
   }
   async use(request, response, next: Function) {
+       console.log('-----------DOCUMENT MIDDLEWARE IS FIRED------------');
+      console.log('');
+      console.log('');       
        const db = request['dbConnection'];
        this.documentModel = db.model(DOCUMENT_MODEL_TOKEN, DocumentSchema) as Model<IDocument>;
 

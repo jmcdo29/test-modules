@@ -1,13 +1,14 @@
 import { Injectable, NestMiddleware, Inject } from '@nestjs/common';
 import { Request, Response } from 'express';
 
-import * as chalk from 'chalk';
 import { Model } from 'mongoose';
 import { verify } from 'jsonwebtoken';
 
 import { USER_MODEL_TOKEN, SERVER_CONFIG, DB_CONNECTION_TOKEN } from '../../server.constants';
 import { IUser } from '../../modules/users/interfaces/user.interface';
 import { UserSchema } from '../../modules/users/schemas/user.schema';
+
+import { magenta } from 'chalk';
 
 @Injectable()
 export class TokenMiddleware implements NestMiddleware {
@@ -16,6 +17,7 @@ export class TokenMiddleware implements NestMiddleware {
         console.log('Token middleware called');
     }
     async use(req: Request, res: Response, next: Function) {
+        console.log(magenta('-----------TOKEN MIDDLEWARE IS FIRED------------'));
         const db = req['dbConnection'];
         this.userModel = db.model(USER_MODEL_TOKEN, UserSchema) as Model<IUser>;
         req.user = {};

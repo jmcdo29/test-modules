@@ -22,6 +22,9 @@ export class MessageByIdMiddleware implements NestMiddleware {
        console.log('MessageByIdMiddleware');
   }
   async use(request, response, next: Function) {
+       console.log('-----------MESSAGE MIDDLEWARE IS FIRED------------');
+      console.log('');
+      console.log('');       
        const db = request['dbConnection'];
        this.messageModel = db.model(MESSAGE_MODEL_TOKEN, MessageSchema) as Model<IMessage>;
 

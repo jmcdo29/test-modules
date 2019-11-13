@@ -10,6 +10,7 @@ import { IArticle } from './../interfaces/article.interface';
 import { ArticleSchema } from './../schemas/article.schema';
 
 import { MESSAGES, ARTICLE_MODEL_TOKEN } from '../../../server.constants';
+import { TenantHelper } from '../../../common/helpers/tenant-helper';
 
 @Injectable()
 /**
@@ -22,7 +23,9 @@ export class ArticleByIdMiddleware implements NestMiddleware {
           console.log('ArticleByIdMiddleware');
      }
      async use(request, response, next: Function) {
-          console.log('Article by id middleware');
+          console.log('-----------ARTICLE MIDDLEWARE IS FIRED------------');
+           console.log('');
+           console.log('');          
           const db = request['dbConnection'];
           this.articleModel = db.model(ARTICLE_MODEL_TOKEN, ArticleSchema) as Model<IArticle>;
 

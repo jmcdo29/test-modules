@@ -27,11 +27,11 @@ export class PlansModule implements NestModule {
     }
     public configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(PlanValidatorMiddleware)
-            .forRoutes({ path: 'plans', method: RequestMethod.POST });
+                .apply(PlanValidatorMiddleware)
+                .forRoutes({ path: 'plans', method: RequestMethod.POST });
 
         consumer.apply(PlanByIdMiddleware)
-            .forRoutes({ path: 'plans/:planId', method: RequestMethod.ALL });
+                .forRoutes({ path: 'plans/:planId', method: RequestMethod.ALL });
         //  users id calling middleware for findById users before run another methods like "delete/update/read"
     }
 }

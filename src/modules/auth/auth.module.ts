@@ -46,22 +46,22 @@ import { Verifier } from './passport/verifier';
 export class AuthModule implements NestModule {
     public configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(BodyValidatorMiddleware)
-            .forRoutes('auth/local/signup');
+                .apply(BodyValidatorMiddleware)
+                .forRoutes('auth/local/signup');
         consumer
-            .apply(LoginValidatorMiddleware, authenticate('local-signin', { session: false }))
-            .forRoutes('auth/local/signin');
+                .apply(LoginValidatorMiddleware, authenticate('local-signin', { session: false }))
+                .forRoutes('auth/local/signin');
 
         consumer
-            .apply(authenticate('facebook', { session: false }))
-            .forRoutes('auth/facebook/token');
+                .apply(authenticate('facebook', { session: false }))
+                .forRoutes('auth/facebook/token');
 
         consumer
-            .apply(authenticate('twitter', { session: false }))
-            .forRoutes('auth/twitter/token');
+                .apply(authenticate('twitter', { session: false }))
+                .forRoutes('auth/twitter/token');
 
         consumer
-            .apply(authenticate('google', { session: false }))
-            .forRoutes('auth/google/token');
+                .apply(authenticate('google', { session: false }))
+                .forRoutes('auth/google/token');
     }
 }

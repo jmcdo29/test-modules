@@ -22,7 +22,10 @@ export class ApplicantByIdMiddleware implements NestMiddleware {
        console.log('ApplicantByIdMiddleware');
   }
   async use(request, response, next: Function) {
-       const db = request['dbConnection'];
+      console.log('-----------APPLICANT MIDDLEWARE IS FIRED------------');
+      console.log('');
+      console.log('');
+      const db = request['dbConnection'];
        this.applicantModel = db.model(APPLICANT_MODEL_TOKEN, ApplicantSchema) as Model<IApplicant>;
 
        if (!Types.ObjectId.isValid(request.params.applicantId)) {

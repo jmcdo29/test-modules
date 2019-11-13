@@ -9,7 +9,7 @@ import { Model, Types, Connection } from 'mongoose';
 import { IJob } from './../interfaces/job.interface';
 import { JobSchema } from './../schemas/job.schema';
 
-import { MESSAGES, JOB_MODEL_TOKEN } from '../../../server.constants';
+import { MESSAGES, JOB_MODEL_TOKEN,DB_CONNECTION_TOKEN } from '../../../server.constants';
 
 @Injectable()
 /**
@@ -22,6 +22,9 @@ export class JobByIdMiddleware implements NestMiddleware {
        console.log('JobByIdMiddleware');
   }
   async use(request, response, next: Function) {
+       console.log('-----------JOB MIDDLEWARE IS FIRED------------');
+      console.log('');
+      console.log('');       
        const db = request['dbConnection'];
        this.jobModel = db.model(JOB_MODEL_TOKEN, JobSchema) as Model<IJob>;
 
